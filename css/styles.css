@@ -1,0 +1,103 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to top, #ff9966, #ff5e62, #ff9966, #ffe29f);
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  z-index: 2;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.img {
+  width: 180px;
+  max-width: 40%;
+  border-radius: 12px;
+}
+
+.texto-personal {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+}
+
+button {
+  background: #fff;
+  color: #ff5e62;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+#nubes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Nubes como imágenes */
+.nube-img {
+  position: absolute;
+  left: -200px; /* empieza fuera de pantalla */
+  pointer-events: none;
+  animation: flotar 30s linear infinite;
+}
+
+@keyframes flotar {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(120vw); }
+}
+
+/* Estilos del mensaje sorpresa */
+#mensaje-sorpresa {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  background: rgba(255, 255, 255, 0.95);
+  color: #ff5e62;
+  font-size: 2.2rem;
+  font-weight: bold;
+  padding: 1.5rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 999;
+}
+
+#mensaje-sorpresa.mostrar {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
